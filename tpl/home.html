@@ -1,0 +1,22 @@
+<div ng-controller="HomeCtrl">
+    <textarea ng-model="fb.share" placeholder="Escribe algo"></textarea>
+    <button ng-click="share()">Share</button><br><br>
+
+    <div ng-repeat="post in posts">
+        <a ng-href="{{post.from.id}}">{{post.story}}</a>        
+        <div>{{post.message}}<br>
+            <div ng-if="post.type == 'video'">
+                <video ng-src="{{post.source}}" style="width:300px;height:240px" controls preload="none"></video>
+            </div>
+            <div ng-if="post.type == 'photo'">
+                <img ng-src="{{post.picture}}" />
+            </div>
+
+        </div>
+        <hr>
+        <br><br>
+    </div>
+
+    <button ng-click="posts_home('before', data.before)">Atras</button>
+    <button ng-click="posts_home('after', data.after)">Siguiente</button> 
+</div>
